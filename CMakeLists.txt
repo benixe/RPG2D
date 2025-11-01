@@ -72,6 +72,7 @@ endif()
 
 # Ajouter les répertoires d'include
 target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
+target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/Core/")
 
 # Lier les bibliothèques SFML
 target_link_libraries(${PROJECT_NAME} PRIVATE
