@@ -8,5 +8,6 @@ private:
 
 public:
     RenderSystem(sf::RenderWindow* win);
-    void update(float deltaTime) override;
+    void update(std::vector<Entity*>& entities, float deltaTime) override;
+
 };

@@ -5,8 +5,15 @@ EntityManager::~EntityManager() {
 		delete entity;
 	}
 }
-void EntityManager::removeEntity(Entity *entity) {
-	entities;
+
+void EntityManager::removeEntity(Entity* entity) {
+	for (auto it = entities.begin(); it != entities.end(); ++it) {
+		if (*it == entity) {
+			delete* it;
+			entities.erase(it);
+			return;
+		}
+	}
 }
 
 std::vector<Entity*>& EntityManager::getEntities() {
@@ -14,5 +21,7 @@ std::vector<Entity*>& EntityManager::getEntities() {
 }
 
 Entity* EntityManager::createEntity(){
-	return nullptr;
+	Entity* ent = new Entity;
+	entities.push_back(ent);
+	return ent;
 }

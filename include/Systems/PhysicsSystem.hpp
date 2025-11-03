@@ -4,5 +4,5 @@
 class PhysicsSystem : public System {
 public:
 	PhysicsSystem();
-	void update(float deltaTime) override;
+	void update(std::vector<Entity*>& entities, float deltaTime) override;
 };
