@@ -59,12 +59,12 @@ int main() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::Q)) velocity->velocity.x = -100.0f;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D)) velocity->velocity.x = 100.0f;
 
-        // Update ECS
-        scene.update(deltaTime);
-
         // Render
         window.clear(sf::Color::Black);
-        // (le render est fait dans scene.update via RenderSystem)
+
+        // Update ECS (inclut le rendering via RenderSystem)
+        scene.update(deltaTime);
+
         window.display();
     }
 
