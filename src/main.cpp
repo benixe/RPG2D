@@ -5,6 +5,7 @@
 #include "Components/Transform.hpp"
 #include "Components/SpriteRender.hpp"
 #include "Components/Velocity.hpp"
+#include "Components/PlayerInput.hpp"
 
 int main() {
     unsigned int width = 640;
@@ -28,8 +29,10 @@ int main() {
     player->setTag("player");
 
     Transform* transform = new Transform();
+    PlayerInput* playerInput = new PlayerInput();
     transform->position = { width / 2.0f, height / 2.0f };
     player->addComponent(transform);
+    player->addComponent(playerInput);
 
     SpriteRender* spriteComp = new SpriteRender();
     spriteComp->texture = &texture;
@@ -52,21 +55,12 @@ int main() {
             }
         }
 
-        // Contrôles
-        velocity->velocity = { 0.0f, 0.0f };
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::Z)) velocity->velocity.y = -100.0f;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::S)) velocity->velocity.y = 100.0f;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::Q)) velocity->velocity.x = -100.0f;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D)) velocity->velocity.x = 100.0f;
-
-        // Update ECS
-        scene.update(deltaTime);
-
         // Render
         window.clear(sf::Color::Black);
-        // (le render est fait dans scene.update via RenderSystem)
+
+        // Update ECS (inclut le rendering via RenderSystem)
+        scene.update(deltaTime);
+
         window.display();
     }
-
-    return 0;
 }

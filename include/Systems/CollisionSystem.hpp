@@ -1,8 +1,9 @@
 #pragma once
 #include "Core/System.hpp"
 
-class InputSystem : public System {
+class CollisionSystem : public System {
 public:
-	InputSystem();
+	CollisionSystem();
 	void update(std::vector<Entity*>& entities, float deltaTime) override;
+
 };
